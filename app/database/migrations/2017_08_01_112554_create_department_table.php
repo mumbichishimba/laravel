@@ -12,7 +12,14 @@ class CreateDepartmentTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+            Schema::create("department", function ($table){
+                $table->increments('id');
+                $table->string("name");
+                $table->string("departmentType");
+                $table->text("bio");
+                $table->integer("parentId")->default(0);
+                $table->timestamps();
+            });
 	}
 
 	/**
@@ -22,7 +29,7 @@ class CreateDepartmentTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+            Schema::drop("department");
 	}
 
 }
